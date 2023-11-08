@@ -11,7 +11,21 @@ class Cartitem extends React.Component {
 
         }
         // this.increaseQuantity=this.increaseQuantity.bind(this);
+        // this.testing();
     }
+
+//     testing(){
+//         const promise=new Promise((resolve,reject)=>{
+//             setTimeout(()=>{
+//                 resolve('done');
+//             },5000);
+//         });
+//             promise.then(()=>{
+//                 this.setState({qty:100});
+//                 console.log("this.state",this.state);
+//             });
+    
+// }
     /*
      increaseQuantity(){
         //    qty= qty+1;
@@ -23,7 +37,7 @@ class Cartitem extends React.Component {
     */
     increaseQuantity = () => {
         // alert("windows")
-        console.log("this.state", this.state) // error
+        //console.log("this.state", this.state) // error
         // console.log("this", this) //undefined
 
         /*
@@ -36,8 +50,10 @@ class Cartitem extends React.Component {
              this.setState(
                     {
                         qty:this.state.qty+1
-                    }
-                );
+                    },
+                ()=>{
+                    console.log("this.state",this.state)
+                });
         */
         
           // 2nd way is using function concept use this if previous value is needed
@@ -45,24 +61,36 @@ class Cartitem extends React.Component {
             return{
                 qty:prevState.qty+1
             }
+           },()=>{
+            console.log("this.state",this.state);
            }); 
         
     }
 
 
     decreaseQuantity = () => {
+        /*
+         const{qty}=this.state;
+         if(qty==0){
+            return;
+         }
+        */ 
         if(this.state.qty>0){
 
            this.setState((prevState)=>{
             return{
                 qty:prevState.qty-1
             }
+           },()=>{
+            console.log("this.state",this.state)
            }); 
         
     }
     
     
 }
+
+
     render() {
         // destructuring
         const { title, price, qty } = this.state;
